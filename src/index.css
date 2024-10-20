@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(/src/font/default-family.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --rals-color-primary: #4dcc8e;
+  --rals-color-green: #4dcc8e;
+  --rals-color-secondary: #fe96e0;
+  --rals-color-lightPink: #fe96e0;
+  --rals-color-pink: #ff3eb7;
+  --rals-color-light: #fff9fe;
+  --rals-color-dark: #12151b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: var(--rals-color-light);
+}
+
+body {
+  background-color: #12151b;
+}
+
+.rals-button {
+  transition:
+    transform 0.03s,
+    background-color 0.2s ease;
+  &:active {
+    transform: translateY(0.6px);
+  }
+}
+
+.rals-group {
+  display: flex;
+}
