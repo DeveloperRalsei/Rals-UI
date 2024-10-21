@@ -1,6 +1,6 @@
 import React from "react";
-// import { Group, Button, defaultTheme, ButtonProps } from "../../src";
-import { Button, defaultTheme, ButtonProps, Group } from "rals-ui";
+import { Group, Button, defaultTheme, ButtonProps } from "../../src";
+// import { Button, defaultTheme, ButtonProps, Group } from "rals-ui";
 
 const buttonColors: Array<keyof typeof defaultTheme.colors> = [
   "primary",

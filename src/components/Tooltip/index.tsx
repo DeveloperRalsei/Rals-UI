@@ -123,8 +123,7 @@ export const Tooltip = ({
       <div
         onMouseEnter={() => setOpened(true)}
         onMouseLeave={() => setOpened(false)}
-        className="rals-tooltip"
-      >
+        className="rals-tooltip">
         {children}
       </div>
       {isOpen && (

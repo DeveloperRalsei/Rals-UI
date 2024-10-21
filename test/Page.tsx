@@ -1,7 +1,8 @@
 import React from "react";
 import Buttons from "./sections/Buttons";
 import Tooltip from "./sections/Tooltip";
-import { Container } from "rals-ui";
+import { Container } from "../src";
+import { Panel } from "./sections/Panel";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
         size="sm">
         <Buttons />
         <Tooltip />
+        <Panel />
       </Container>
     </div>
   );

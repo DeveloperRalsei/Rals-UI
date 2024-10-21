@@ -1,4 +1,4 @@
-const padSizes = {
+export const padSizes = {
   xs: "0.375rem",
   sm: "0.5rem",
   md: "0.75rem",
@@ -6,7 +6,7 @@ const padSizes = {
   xl: "1.25rem",
 } as const;
 
-const radiusSizes = {
+export const radiusSizes = {
   xs: "0.25rem",
   sm: "0.5rem",
   md: "0.75rem",
@@ -15,7 +15,7 @@ const radiusSizes = {
   circle: "100%",
 } as const;
 
-const colors = {
+export const colors = {
   primary: "#4dcc8e",
   green: "#4dcc8e",
   secondary: "#fe96e0",
@@ -26,17 +26,19 @@ const colors = {
   transparent: "transparent",
 } as const;
 
+export const fontSizes = {
+  xs: "0.75rem",
+  sm: "0.875rem",
+  md: "1rem",
+  lg: "1.125rem",
+  xl: "1.25rem",
+  "2xl": "1.5rem",
+};
+
 export const defaultTheme = {
   colors,
   padSizes,
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    md: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-  },
+  fontSizes,
   defaultRadius: "xs",
   radiusSizes,
 } as const;
