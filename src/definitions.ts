@@ -23,6 +23,7 @@ export const colors = {
   pink: "#ff3eb7",
   light: "#fff9fe",
   dark: "#000",
+  inherit: "#ccc",
   transparent: "transparent",
 } as const;
 
@@ -35,15 +36,35 @@ export const fontSizes = {
   "2xl": "1.5rem",
 };
 
-export const defaultTheme = {
-  colors,
-  padSizes,
-  fontSizes,
-  defaultRadius: "xs",
-  radiusSizes,
+export const breakPoints = {
+  xs: "36em",
+  sm: "48em",
+  md: "62em",
+  lg: "75em",
+  xl: "88em",
 } as const;
 
 export type defaultProps = {
   m?: number | string;
   p?: number | string;
+};
+
+export const defaultTheme = {
+  colors,
+  padSizes,
+  fontSizes,
+  defaultRadius: "md",
+  radiusSizes,
+  defaultTransition: "0.25s",
+  breakPoints,
+} as const;
+
+export type Theme = {
+  colors: Record<keyof typeof colors, string>;
+  padSizes: Record<keyof typeof padSizes, string>;
+  fontSizes: Record<keyof typeof fontSizes, string>;
+  defaultRadius: keyof typeof radiusSizes;
+  radiusSizes: Record<keyof typeof radiusSizes, string>;
+  defaultTransition: string;
+  breakPoints: Record<keyof typeof breakPoints, string>;
 };

@@ -8,6 +8,7 @@ export const PanelMain = ({ children, ...props }: PanelMainProps) => {
   const styles = {
     ...props.style,
   };
+
   return (
     <main className="rals-panel-main" style={styles}>
       {children}

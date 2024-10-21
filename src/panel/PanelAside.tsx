@@ -4,6 +4,7 @@ export interface PanelAsideProps {
   children?: React.ReactNode;
   width?: number;
   style?: React.CSSProperties;
+  collapsed?: boolean;
 }
 
 export const PanelAsideStyles: React.CSSProperties = {

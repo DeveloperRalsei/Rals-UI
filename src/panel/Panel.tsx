@@ -1,25 +1,26 @@
 import React from "react";
-import { PanelAside } from "./PanelAside";
+import { PanelAside, PanelAsideProps } from "./PanelAside";
 import { PanelFooter } from "./PanelFooter";
 import { PanelHeader } from "./PanelHeader";
 import { PanelMain } from "./PanelMain";
-import { PanelNavbar } from "./PanelNavbar";
+import { PanelNavbar, PanelNavbarProps } from "./PanelNavbar";
 
 export interface PanelProps {
   children?: React.ReactNode;
-  header?: { height: number };
-  navbar?: { width: number };
+  header?: { height: number; collapsed?: boolean };
+  navbar?: { width: number; collapsed?: boolean };
   footer?: { height: number };
   aside?: { width: number };
 }
 
 export const Panel = ({
   header = { height: 50 },
-  navbar = { width: 150 },
+  navbar = { width: 150, collapsed: false },
   footer = { height: 50 },
   aside = { width: 200 },
   children,
 }: PanelProps) => {
+  /**Element's Styles */
   const containerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
@@ -29,7 +30,6 @@ export const Panel = ({
 
   const mainSectionStyle: React.CSSProperties = {
     display: "flex",
-    flex: 1,
     overflow: "hidden",
   };
 
@@ -45,8 +45,22 @@ export const Panel = ({
 
   const mainContentStyle: React.CSSProperties = {
     flex: 1,
+    flexGrow: 1,
     overflowY: "auto",
   };
+
+  /** Panel Element'sProps */
+  const asideProps: PanelAsideProps = {
+    ...aside,
+    style: asideStyle,
+  };
+
+  const navbarProps: PanelNavbarProps = {
+    ...navbar,
+    style: navbarStyle,
+  };
+
+  /** Elements */
 
   const headerChild = React.Children.toArray(children).find(
     (child) => (child as React.ReactElement).type === PanelHeader
@@ -71,17 +85,12 @@ export const Panel = ({
   return (
     <div className="rals-panel" style={containerStyle}>
       {headerChild
-        ? React.cloneElement(headerChild as React.ReactElement, {
-            height: header.height,
-          })
+        ? React.cloneElement(headerChild as React.ReactElement, header)
         : null}
 
       <div style={mainSectionStyle}>
         {navChild
-          ? React.cloneElement(navChild as React.ReactElement, {
-              width: navbar.width,
-              style: navbarStyle,
-            })
+          ? React.cloneElement(navChild as React.ReactElement, navbarProps)
           : null}
 
         {mainChild
@@ -91,16 +100,11 @@ export const Panel = ({
           : null}
 
         {asideChild
-          ? React.cloneElement(asideChild as React.ReactElement, {
-              width: aside.width,
-              style: asideStyle,
-            })
+          ? React.cloneElement(asideChild as React.ReactElement, asideProps)
           : null}
       </div>
       {footerChild
-        ? React.cloneElement(footerChild as React.ReactElement, {
-            height: footer.height,
-          })
+        ? React.cloneElement(footerChild as React.ReactElement, footer)
         : null}
     </div>
   );

@@ -21,7 +21,7 @@ export const TooltipStyles: React.CSSProperties = {
   backgroundColor: theme.colors.light,
   color: theme.colors.dark,
   padding: theme.padSizes.sm,
-  borderRadius: "4px",
+  borderRadius: theme.radiusSizes[theme.defaultRadius],
   whiteSpace: "nowrap",
   transition: "all 0.3s",
   zIndex: 100,

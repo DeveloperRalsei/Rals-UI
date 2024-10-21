@@ -9,13 +9,22 @@ export interface PanelHeaderProps {
 export const PanelHeaderStyles: React.CSSProperties = {
   height: "70px",
   width: "100vw",
-  borderBottom: "1px solid " + theme.colors.lightPink,
+  borderBottom: "1px solid " + theme.colors.inherit,
   zIndex: 2,
   gridArea: "header",
+  overflow: "hidden",
 };
 
-export const PanelHeader = ({ children, ...props }: PanelHeaderProps) => {
-  const styles: React.CSSProperties = { ...PanelHeaderStyles, ...props.style };
+export const PanelHeader = ({
+  children,
+  height,
+  ...props
+}: PanelHeaderProps) => {
+  const styles: React.CSSProperties = {
+    ...PanelHeaderStyles,
+    ...props.style,
+    height,
+  };
 
   return <header style={styles}>{children}</header>;
 };

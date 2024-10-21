@@ -1,5 +1,6 @@
 import React from "react";
-export interface ContainerProps {
+import { defaultProps } from "../../definitions";
+export interface ContainerProps extends defaultProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl";
   style?: React.CSSProperties;
@@ -12,6 +13,7 @@ export const ContainerStyles: React.CSSProperties = {
 
 export const Container = ({
   size = "md",
+  p,
   children,
   ...props
 }: ContainerProps) => {
@@ -25,6 +27,7 @@ export const Container = ({
   const styles: React.CSSProperties = {
     ...ContainerStyles,
     width: sizeStyles[size],
+    padding: p,
     ...props.style,
   };
   return (

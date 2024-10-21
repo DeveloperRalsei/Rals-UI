@@ -78,7 +78,8 @@ export const Button = ({
       style={styles}
       className="rals-button"
       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}>
+      onMouseLeave={() => setIsHover(false)}
+    >
       {children}
     </UnstyledButton>
   );

@@ -1,14 +1,24 @@
 {
   "name": "rals-ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple react ui component library reminiscent of my favorite fictional character ralsei :3",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "ui",
+    "react",
+    "deltarune",
+    "ralsei"
+  ],
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
+    },
+    "./panel": {
+      "import": "./dist/esm/panel/index.js",
+      "require": "./dist/cjs/panel/index.js"
     }
   },
   "files": [
@@ -19,7 +29,8 @@
     "build": "sh build.sh",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "publish": "npm run build; npm publish --access public"
+    "publish": "npm run build; npm publish --access public",
+    "link": "sudo npm link; npm link rals-ui"
   },
   "author": {
     "name": "developer-ralsei",

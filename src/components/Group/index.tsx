@@ -24,7 +24,7 @@ export const Group = ({
   align,
   w = "fit-content",
   h = "fit-content",
-  m = "sm",
+  m,
   grow = false,
   ...props
 }: GroupProps) => {
@@ -37,6 +37,7 @@ export const Group = ({
     alignItems: align,
     width: w,
     height: h,
+    padding: props.p,
     margin: typeof m === "string" ? m : `${m}px`,
     flexGrow: grow ? 1 : 0,
     ...props.style,
