@@ -19,6 +19,10 @@
     "./panel": {
       "import": "./dist/esm/panel/index.js",
       "require": "./dist/cjs/panel/index.js"
+    },
+    "./theme": {
+      "import": "./dist/esm/theme/index.js",
+      "require": "./dist/cjs/theme/index.js"
     }
   },
   "files": [

@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultTheme as theme } from "../definitions";
+import { defaultTheme } from "../theme";
 export interface PanelFooterProps {
   children?: React.ReactNode;
   height?: number;
@@ -8,7 +8,7 @@ export interface PanelFooterProps {
 
 export const PanelFooterStyles: React.CSSProperties = {
   height: "25px",
-  borderTop: "1px solid " + theme.colors.lightPink,
+  borderTop: "1px solid " + defaultTheme.colors.lightPink,
   zIndex: 0,
   gridArea: "footer",
 };

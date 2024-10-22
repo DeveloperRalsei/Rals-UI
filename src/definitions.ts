@@ -47,17 +47,14 @@ export const breakPoints = {
 export type defaultProps = {
   m?: number | string;
   p?: number | string;
+  w?: number | string;
+  h?: number | string;
+  shadow?: boolean;
+  radius?: keyof typeof radiusSizes | number;
+  bg?: string;
+  c?: string;
+  style?: React.CSSProperties;
 };
-
-export const defaultTheme = {
-  colors,
-  padSizes,
-  fontSizes,
-  defaultRadius: "md",
-  radiusSizes,
-  defaultTransition: "0.25s",
-  breakPoints,
-} as const;
 
 export type Theme = {
   colors: Record<keyof typeof colors, string>;

@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultTheme as theme } from "../definitions";
+import { defaultTheme } from "../theme";
 export interface PanelAsideProps {
   children?: React.ReactNode;
   width?: number;
@@ -10,7 +10,7 @@ export interface PanelAsideProps {
 export const PanelAsideStyles: React.CSSProperties = {
   width: "200px",
   height: "100vh",
-  borderLeft: "1px solid " + theme.colors.lightPink,
+  borderLeft: "1px solid " + defaultTheme.colors.lightPink,
   zIndex: 1,
   gridArea: "aside",
 };

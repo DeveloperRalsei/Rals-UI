@@ -28,7 +28,9 @@ body {
 }
 
 .rals-button {
-  transition: transform 0.03s, background-color 0.2s ease;
+  transition:
+    transform 0.03s,
+    background-color 0.2s ease;
   &:active {
     transform: translateY(0.6px);
   }

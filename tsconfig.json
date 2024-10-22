@@ -6,6 +6,7 @@
     "jsx": "react-jsx",
     "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],
     "types": ["node"],
+    "target": "ES6",
     "module": "ES2015",
     "moduleResolution": "Node",
     "noImplicitAny": true,
@@ -13,8 +14,7 @@
     "rootDir": "src",
     "outDir": "dist/esm",
     "sourceMap": true,
-    "strict": true,
-    "target": "ES6"
+    "strict": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultTheme as theme } from "../definitions";
+import { defaultTheme } from "../theme";
 export interface PanelNavbarProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -10,10 +10,10 @@ export interface PanelNavbarProps {
 export const PanelNavbarStyles: React.CSSProperties = {
   width: "150px",
   height: "100vh",
-  borderRight: "1px solid " + theme.colors.lightPink,
+  borderRight: "1px solid " + defaultTheme.colors.lightPink,
   position: "relative",
   zIndex: 1,
-  transition: theme.defaultTransition + " ease",
+  transition: defaultTheme.defaultTransition + " ease",
 };
 
 export const PanelNavbar = ({

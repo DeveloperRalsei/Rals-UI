@@ -1,33 +1,40 @@
 import React from "react";
-import { defaultTheme as theme } from "../../definitions";
+import { defaultTheme } from "../../theme";
 import { UnstyledButton, UnstyledButtonProps } from "./UnstyledButton";
 import { useState } from "react";
+import { useTheme } from "../../theme";
 
 export interface ButtonProps extends UnstyledButtonProps {
-  variant?: "filled" | "outlined" | "ghost" | "link" | "icon" | "default";
+  variant?:
+    | "filled"
+    | "outlined"
+    | "subtle"
+    | "ghost"
+    | "link"
+    | "icon"
+    | "default";
 }
 
 export const ButtonStyles: React.CSSProperties = {
-  color: theme.colors.primary,
-  backgroundColor: theme.colors.primary,
-  borderRadius: theme.radiusSizes[theme.defaultRadius],
+  color: defaultTheme.colors.primary,
+  backgroundColor: defaultTheme.colors.primary,
 };
 
 export const Button = ({
   variant = "filled",
   color = "primary",
-  fColor = "light",
+  c = "light",
+  radius = defaultTheme.defaultRadius,
   children,
   ...props
 }: ButtonProps) => {
   const [isHover, setIsHover] = useState(false);
+  const theme = useTheme() || defaultTheme;
 
   const variantStyles: Record<typeof variant, React.CSSProperties> = {
     filled: {
       color:
-        color === "light"
-          ? theme.colors["dark"]
-          : theme.colors[fColor || color],
+        color === "light" ? theme.colors["dark"] : theme.colors[c || color],
     },
     outlined: {
       backgroundColor: isHover ? theme.colors[color] : "transparent",
@@ -35,9 +42,15 @@ export const Button = ({
       borderColor: theme.colors[color],
       color: isHover
         ? color == "light"
-          ? theme.colors["dark"]
-          : theme.colors["light"]
+          ? theme.colors.dark
+          : theme.colors[c || color]
         : theme.colors[color],
+    },
+    subtle: {
+      backgroundColor: isHover
+        ? theme.colors[color] + "1a"
+        : theme.colors[color] + "3c",
+      color: theme.colors[color],
     },
     ghost: {
       backgroundColor: isHover ? theme.colors[color] + "3c" : "transparent",
@@ -53,7 +66,7 @@ export const Button = ({
       width: "2.5em",
       height: "2.5em",
       padding: 0.5,
-      color: theme.colors[fColor || color],
+      color: theme.colors[c || color],
       overflow: "hidden",
     },
     default: {
@@ -65,9 +78,11 @@ export const Button = ({
     },
   };
 
-  const styles = {
+  const styles: React.CSSProperties = {
     ...ButtonStyles,
     backgroundColor: theme.colors[color],
+    borderRadius:
+      typeof radius === "number" ? radius : theme.radiusSizes[radius],
     ...variantStyles[variant],
     ...props.style,
   };

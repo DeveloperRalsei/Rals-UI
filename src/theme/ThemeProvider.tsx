@@ -1,8 +1,9 @@
 import React from "react";
 import { createContext, useContext } from "react";
-import { Theme, defaultTheme as theme } from "../definitions";
+import { Theme } from "../definitions";
+import { defaultTheme } from "../theme";
 
-const ThemeContext = createContext(theme);
+const ThemeContext = createContext(defaultTheme);
 
 export const ThemeProvider = ({
   children,
@@ -10,7 +11,7 @@ export const ThemeProvider = ({
   children: React.ReactNode;
   theme?: Theme;
 }) => {
-  const value = JSON.parse(localStorage.getItem("rals-theme")!) || theme;
+  const value = JSON.parse(localStorage.getItem("rals-theme")!) || defaultTheme;
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

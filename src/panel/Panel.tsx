@@ -63,23 +63,23 @@ export const Panel = ({
   /** Elements */
 
   const headerChild = React.Children.toArray(children).find(
-    (child) => (child as React.ReactElement).type === PanelHeader
+    (child) => (child as React.ReactElement).type === PanelHeader,
   );
 
   const navChild = React.Children.toArray(children).find(
-    (child) => (child as React.ReactElement).type === PanelNavbar
+    (child) => (child as React.ReactElement).type === PanelNavbar,
   );
 
   const footerChild = React.Children.toArray(children).find(
-    (child) => (child as React.ReactElement).type === PanelFooter
+    (child) => (child as React.ReactElement).type === PanelFooter,
   );
 
   const asideChild = React.Children.toArray(children).find(
-    (child) => (child as React.ReactElement).type === PanelAside
+    (child) => (child as React.ReactElement).type === PanelAside,
   );
 
   const mainChild = React.Children.toArray(children).find(
-    (child) => (child as React.ReactElement).type === PanelMain
+    (child) => (child as React.ReactElement).type === PanelMain,
   );
 
   return (

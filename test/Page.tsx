@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Buttons from "./sections/Buttons";
 import Tooltip from "./sections/Tooltip";
-import { Container } from "../src";
+import { Button, Container } from "../src";
 import { Panel } from "./sections/Panel";
+import { useNavProgress } from "./loadingbar";
 
 export default function Page() {
   return (

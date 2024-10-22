@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultTheme as theme } from "../definitions";
+import { defaultTheme } from "../theme";
 export interface PanelHeaderProps {
   height?: number;
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ export interface PanelHeaderProps {
 export const PanelHeaderStyles: React.CSSProperties = {
   height: "70px",
   width: "100vw",
-  borderBottom: "1px solid " + theme.colors.inherit,
+  borderBottom: "1px solid " + defaultTheme.colors.inherit,
   zIndex: 2,
   gridArea: "header",
   overflow: "hidden",

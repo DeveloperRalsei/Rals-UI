@@ -6,6 +6,7 @@ import Panel from "./PanelPage";
 import "../src/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "../src";
+import { ProgressBar, useNavProgress } from "./loadingbar";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +19,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+const App = () => {
+  return (
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
-  </StrictMode>
-);
+  );
+};
+
+createRoot(document.getElementById("root")!).render(<App />);

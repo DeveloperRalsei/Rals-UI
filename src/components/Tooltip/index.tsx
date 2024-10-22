@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { defaultTheme as theme, type defaultProps } from "../../definitions";
+import { defaultProps } from "../../definitions";
+import { defaultTheme, useTheme } from "../../theme";
 
 export interface TooltipProps extends defaultProps {
   children: React.ReactNode;
@@ -18,10 +19,10 @@ export const TooltipStyles: React.CSSProperties = {
   bottom: "110%",
   left: "50%",
   transform: "translateX(-50%)",
-  backgroundColor: theme.colors.light,
-  color: theme.colors.dark,
-  padding: theme.padSizes.sm,
-  borderRadius: theme.radiusSizes[theme.defaultRadius],
+  backgroundColor: defaultTheme.colors.light,
+  color: defaultTheme.colors.dark,
+  padding: defaultTheme.padSizes.sm,
+  borderRadius: defaultTheme.radiusSizes[defaultTheme.defaultRadius],
   whiteSpace: "nowrap",
   transition: "all 0.3s",
   zIndex: 100,
@@ -38,6 +39,7 @@ export const Tooltip = ({
   ...props
 }: TooltipProps) => {
   const [isOpen, setOpened] = useState(opened);
+  const theme = useTheme() || defaultTheme;
 
   const positonStyles: Record<typeof position, React.CSSProperties> = {
     top: {
@@ -123,7 +125,8 @@ export const Tooltip = ({
       <div
         onMouseEnter={() => setOpened(true)}
         onMouseLeave={() => setOpened(false)}
-        className="rals-tooltip">
+        className="rals-tooltip"
+      >
         {children}
       </div>
       {isOpen && (
