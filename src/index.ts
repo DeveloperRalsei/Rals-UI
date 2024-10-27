@@ -1,3 +1,3 @@
 export * from "./components";
 export * from "./definitions";
-export * from "./theme";
+export * from "./core";

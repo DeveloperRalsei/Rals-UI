@@ -10,7 +10,7 @@ const tooltipPoses: Array<TooltipProps["position"]> = [
 
 export default function Buttons() {
   return (
-    <div id="tooltip" style={{ height: "100vh" }}>
+    <div style={{ height: "100vh" }}>
       <h1>Tooltip</h1>
       <Group>
         Light Tooltips

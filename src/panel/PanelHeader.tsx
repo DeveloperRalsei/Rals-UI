@@ -1,30 +1,38 @@
 import React from "react";
-import { defaultTheme } from "../theme";
+import { defaultTheme } from "../definitions";
+import { Core } from "../core";
 export interface PanelHeaderProps {
   height?: number;
   children?: React.ReactNode;
   style?: React.CSSProperties;
+  withBorder?: boolean;
 }
 
 export const PanelHeaderStyles: React.CSSProperties = {
   height: "70px",
   width: "100vw",
-  borderBottom: "1px solid " + defaultTheme.colors.inherit,
   zIndex: 2,
-  gridArea: "header",
   overflow: "hidden",
 };
 
 export const PanelHeader = ({
   children,
   height,
+  withBorder = true,
   ...props
 }: PanelHeaderProps) => {
   const styles: React.CSSProperties = {
     ...PanelHeaderStyles,
-    ...props.style,
+    borderBottom: withBorder
+      ? "1px solid " + defaultTheme.colors.inherit
+      : "none",
     height,
+    ...props.style,
   };
 
-  return <header style={styles}>{children}</header>;
+  return (
+    <Core as={"header"} className="rals-panel-header" style={styles}>
+      {children}
+    </Core>
+  );
 };

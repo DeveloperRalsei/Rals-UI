@@ -1,5 +1,6 @@
 import React from "react";
 import { defaultProps } from "../../definitions";
+import { Core } from "../../core";
 export interface ContainerProps extends defaultProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl";
@@ -31,8 +32,8 @@ export const Container = ({
     ...props.style,
   };
   return (
-    <div {...props} style={styles} className="rals-container">
+    <Core {...props} style={styles} className="rals-container">
       {children}
-    </div>
+    </Core>
   );
 };

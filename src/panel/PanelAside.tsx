@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultTheme } from "../theme";
+import { defaultTheme } from "../definitions";
 export interface PanelAsideProps {
   children?: React.ReactNode;
   width?: number;
@@ -10,15 +10,22 @@ export interface PanelAsideProps {
 export const PanelAsideStyles: React.CSSProperties = {
   width: "200px",
   height: "100vh",
-  borderLeft: "1px solid " + defaultTheme.colors.lightPink,
+  borderLeft: "1px solid " + defaultTheme.colors.inherit,
   zIndex: 1,
   gridArea: "aside",
+  transition: defaultTheme.defaultTransition + " ease",
 };
 
-export const PanelAside = ({ width, children, ...props }: PanelAsideProps) => {
+export const PanelAside = ({
+  width,
+  collapsed = false,
+  children,
+  ...props
+}: PanelAsideProps) => {
   const styles: React.CSSProperties = {
     ...PanelAsideStyles,
     ...props.style,
+    width: collapsed ? 0 : width,
   };
 
   return (

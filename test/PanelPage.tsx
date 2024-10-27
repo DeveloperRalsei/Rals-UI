@@ -1,44 +1,43 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Panel } from "../src/panel";
-import { Button, Container, Group } from "../src";
-import { useNavigate } from "react-router-dom";
+import { Button, Group, Title } from "../src";
 
-import { type Tooltip } from "rals-ui";
-
-export default function PanelPage() {
-  const [navbarCollapsed, setNavbarCollapsed] = useState<boolean>(false);
-  const navigate = useNavigate();
+export const PanelPage = () => {
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Panel
-      header={{ height: 102 }}
-      navbar={{ width: 150, collapsed: navbarCollapsed }}>
+    <Panel navbar={{ width: 200, collapsed }} footer={{ height: 200 }}>
       <Panel.Header>
-        <Group
-          w={"100%"}
-          h={"100%"}
-          p={"0 30px"}
-          align="center"
-          justify="between">
-          <Button onClick={() => navigate("/")}>Back to page</Button>
-          <h2>Title</h2>
-          <Button onClick={() => setNavbarCollapsed(!navbarCollapsed)}>
-            Open/Close Navbar
+        <Group w={"100%"} h={"100%"} align="center" justify="between">
+          <Group gap={20} p={"0 20px"} align="center">
+            <Title order="h2">Panel</Title>
+            <Link to={"/"}>
+              <Button variant="subtle" leftSection={"<"}>
+                GO BACK
+              </Button>
+            </Link>
+          </Group>
+          <Button variant="ghost" onClick={() => setCollapsed(!collapsed)}>
+            Open/Close Nav
           </Button>
         </Group>
       </Panel.Header>
-      <Panel.Aside></Panel.Aside>
+
       <Panel.Navbar>
-        <Button radius={"circle"} w={"100%"}>
-          fullwButton
-        </Button>
+        <Group direction="column" w={"100%"} p={10}>
+          <Button variant="default">Nav item</Button>
+          <Button variant="default">Nav item</Button>
+          <Button variant="default">Nav item</Button>
+          <Button variant="default">Nav item</Button>
+        </Group>
       </Panel.Navbar>
-      <Panel.Main>
-        <Container size="md">
-          <h2 style={{ textAlign: "center" }}>Main</h2>
-        </Container>
-      </Panel.Main>
-      <Panel.Footer>Footer</Panel.Footer>
+
+      <Panel.Main>test</Panel.Main>
+
+      <Panel.Footer withBorder>
+        <Title order="h4">Footer</Title>
+      </Panel.Footer>
     </Panel>
   );
-}
+};

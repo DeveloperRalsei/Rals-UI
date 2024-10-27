@@ -1,17 +1,18 @@
 import React from "react";
+import { Core } from "../core";
 export interface PanelMainProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }
 
 export const PanelMain = ({ children, ...props }: PanelMainProps) => {
-  const styles = {
+  const styles: React.CSSProperties = {
     ...props.style,
   };
 
   return (
-    <main className="rals-panel-main" style={styles}>
+    <Core as={"main"} className="rals-panel-main" style={styles}>
       {children}
-    </main>
+    </Core>
   );
 };

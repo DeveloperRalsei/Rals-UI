@@ -52,9 +52,22 @@ export type defaultProps = {
   shadow?: boolean;
   radius?: keyof typeof radiusSizes | number;
   bg?: string;
-  c?: string;
+  c?: keyof typeof colors | (string & {});
   style?: React.CSSProperties;
+  className?: string;
+  id?: string;
+  children?: React.ReactNode;
 };
+
+export const defaultTheme: Theme = {
+  colors,
+  padSizes,
+  fontSizes,
+  defaultRadius: "xs",
+  radiusSizes,
+  defaultTransition: "0.25s",
+  breakPoints,
+} as const;
 
 export type Theme = {
   colors: Record<keyof typeof colors, string>;

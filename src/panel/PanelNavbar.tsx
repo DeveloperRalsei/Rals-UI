@@ -1,5 +1,6 @@
 import React from "react";
-import { defaultTheme } from "../theme";
+import { defaultTheme } from "../definitions";
+import { Core } from "../core";
 export interface PanelNavbarProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
@@ -10,7 +11,7 @@ export interface PanelNavbarProps {
 export const PanelNavbarStyles: React.CSSProperties = {
   width: "150px",
   height: "100vh",
-  borderRight: "1px solid " + defaultTheme.colors.lightPink,
+  borderRight: "1px solid " + defaultTheme.colors.inherit,
   position: "relative",
   zIndex: 1,
   transition: defaultTheme.defaultTransition + " ease",
@@ -28,8 +29,8 @@ export const PanelNavbar = ({
     width: collapsed ? 0 : width,
   };
   return (
-    <nav style={styles} className="rals-panel-navbar">
+    <Core as="nav" style={styles} className="rals-panel-navbar">
       {children}
-    </nav>
+    </Core>
   );
 };

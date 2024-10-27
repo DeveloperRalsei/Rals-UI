@@ -1,16 +1,14 @@
-import React from "react";
-import { defaultProps } from "../../definitions";
-import { defaultTheme } from "../../theme";
+import React, { HTMLAttributes } from "react";
+import { defaultTheme, defaultProps } from "../../definitions";
 import { Group } from "../Group";
-import { useTheme } from "../../theme";
+import { Core } from "../../core";
 
 export interface UnstyledButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends HTMLAttributes<HTMLButtonElement>,
     defaultProps {
   withBorder?: boolean;
   size?: keyof typeof defaultTheme.padSizes;
   color?: keyof typeof defaultTheme.colors;
-  c?: keyof typeof defaultTheme.colors;
   m?: number | string;
   leftSection?: React.ReactNode;
   rightSection?: React.ReactNode;
@@ -31,9 +29,6 @@ export const UnstyledButtonStyles: React.CSSProperties = {
 
 export const UnstyledButton = ({
   className,
-  m = 0,
-  w,
-  h,
   c = "light",
   shadow = false,
   size = "sm",
@@ -45,16 +40,13 @@ export const UnstyledButton = ({
   children,
   ...props
 }: UnstyledButtonProps) => {
-  const theme = useTheme() || defaultTheme;
+  const theme = defaultTheme;
 
   const styles: React.CSSProperties = {
     ...UnstyledButtonStyles,
     backgroundColor: typeof color !== "string" ? theme.colors[color] : color,
-    color: theme.colors[c],
+    color: typeof c === "string" ? c : theme.colors[c],
     padding: theme.padSizes[size],
-    margin: m,
-    width: w,
-    height: h,
     border: withBorder
       ? `1px solid ${theme.colors.dark}`
       : UnstyledButtonStyles.border,
@@ -66,12 +58,12 @@ export const UnstyledButton = ({
   };
 
   return (
-    <button className={className} {...props} style={styles}>
-      <Group>
+    <Core as={"button"} {...props} style={styles} className="rals-button">
+      <Group style={{ whiteSpace: "nowrap" }}>
         {leftSection}
         <div style={{ color: styles.color }}>{children}</div>
         {rightSection}
       </Group>
-    </button>
+    </Core>
   );
 };

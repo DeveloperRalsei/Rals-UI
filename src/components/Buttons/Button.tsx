@@ -1,18 +1,10 @@
 import React from "react";
-import { defaultTheme } from "../../theme";
 import { UnstyledButton, UnstyledButtonProps } from "./UnstyledButton";
 import { useState } from "react";
-import { useTheme } from "../../theme";
+import { defaultTheme } from "../../definitions";
 
 export interface ButtonProps extends UnstyledButtonProps {
-  variant?:
-    | "filled"
-    | "outlined"
-    | "subtle"
-    | "ghost"
-    | "link"
-    | "icon"
-    | "default";
+  variant?: "filled" | "outlined" | "subtle" | "ghost" | "link" | "default";
 }
 
 export const ButtonStyles: React.CSSProperties = {
@@ -29,72 +21,62 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const [isHover, setIsHover] = useState(false);
-  const theme = useTheme() || defaultTheme;
+
+  const colors = defaultTheme.colors;
 
   const variantStyles: Record<typeof variant, React.CSSProperties> = {
     filled: {
       color:
-        color === "light" ? theme.colors["dark"] : theme.colors[c || color],
+        color === "light"
+          ? defaultTheme.colors.dark
+          : defaultTheme.colors.light,
     },
     outlined: {
-      backgroundColor: isHover ? theme.colors[color] : "transparent",
-      border: `1px solid ${theme.colors[color]}`,
-      borderColor: theme.colors[color],
-      color: isHover
-        ? color == "light"
-          ? theme.colors.dark
-          : theme.colors[c || color]
-        : theme.colors[color],
+      backgroundColor: isHover ? colors[color] : "transparent",
+      border: `1px solid ${colors[color]}`,
+      borderColor: colors[color],
+      color: !isHover
+        ? colors[color]
+        : color === "light"
+        ? colors.dark
+        : colors.light,
     },
     subtle: {
-      backgroundColor: isHover
-        ? theme.colors[color] + "1a"
-        : theme.colors[color] + "3c",
-      color: theme.colors[color],
+      backgroundColor: isHover ? colors[color] + "1a" : colors[color] + "3c",
+      color: colors[color],
     },
     ghost: {
-      backgroundColor: isHover ? theme.colors[color] + "3c" : "transparent",
-      color: theme.colors[color],
+      backgroundColor: isHover ? colors[color] + "3c" : "transparent",
+      color: colors[color],
     },
     link: {
       backgroundColor: "transparent",
       textDecoration: isHover ? "underline" : "none",
       textUnderlineOffset: 4,
-      color: theme.colors[color],
-    },
-    icon: {
-      width: "2.5em",
-      height: "2.5em",
-      padding: 0.5,
-      color: theme.colors[c || color],
-      overflow: "hidden",
+      color: colors[color],
     },
     default: {
-      backgroundColor: isHover
-        ? theme.colors.light + "8e"
-        : theme.colors.light + "3c",
-      color: theme.colors.light,
-      border: "1px solid #fff9fe",
+      backgroundColor: isHover ? colors.light + "8e" : colors.light + "3c",
+      color: colors.light,
+      boxShadow: !isHover ? "none" : `0 0 0 1px ${colors[color]}`,
     },
   };
 
   const styles: React.CSSProperties = {
     ...ButtonStyles,
-    backgroundColor: theme.colors[color],
+    backgroundColor: defaultTheme.colors[color],
     borderRadius:
-      typeof radius === "number" ? radius : theme.radiusSizes[radius],
+      typeof radius === "number" ? radius : defaultTheme.radiusSizes[radius],
     ...variantStyles[variant],
     ...props.style,
   };
 
   return (
     <UnstyledButton
-      {...props}
       style={styles}
-      className="rals-button"
+      {...props}
       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
+      onMouseLeave={() => setIsHover(false)}>
       {children}
     </UnstyledButton>
   );

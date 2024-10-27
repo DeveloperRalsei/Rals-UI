@@ -1,25 +1,28 @@
 import React from "react";
-import { defaultTheme } from "../theme";
+import { defaultTheme } from "../definitions";
 export interface PanelFooterProps {
   children?: React.ReactNode;
   height?: number;
   style?: React.CSSProperties;
+  withBorder?: boolean;
 }
 
 export const PanelFooterStyles: React.CSSProperties = {
   height: "25px",
   borderTop: "1px solid " + defaultTheme.colors.lightPink,
   zIndex: 0,
-  gridArea: "footer",
 };
 
 export const PanelFooter = ({
   height,
+  withBorder = true,
   children,
   ...props
 }: PanelFooterProps) => {
+  const theme = defaultTheme;
   const styles: React.CSSProperties = {
     ...PanelFooterStyles,
+    borderTop: withBorder ? "1px solid " + theme.colors.inherit : "none",
     ...props.style,
   };
 

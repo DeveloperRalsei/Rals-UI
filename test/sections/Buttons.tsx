@@ -1,5 +1,13 @@
 import React from "react";
-import { Group, Button, defaultTheme, ButtonProps } from "../../src";
+import {
+  Group,
+  Button,
+  defaultTheme,
+  ButtonProps,
+  Core,
+  Title,
+} from "../../src";
+import { Link } from "react-router-dom";
 // import { Button, defaultTheme, ButtonProps, Group } from "rals-ui";
 
 const buttonColors: Array<keyof typeof defaultTheme.colors> = [
@@ -16,32 +24,28 @@ const buttonVariants: Array<ButtonProps["variant"]> = [
   "subtle",
   "ghost",
   "link",
-  "icon",
   "default",
 ];
 
 export default function Buttons() {
   return (
     <div id="buttons" style={{ height: "100vh" }}>
-      <h1 style={{ textAlign: "center" }}>Buttons</h1>
-      <Button rightSection={`">"`} leftSection={"<"}>
-        Right Section Button
-      </Button>
+      <Title order="h1" style={{ textAlign: "center" }} c="#000">
+        Buttons
+      </Title>
+      <Link to={"/panel"}>
+        <Button>Go to the Panel</Button>
+      </Link>
       <Group gap={10} h={"100%"}>
         {buttonVariants.map((variant) => (
-          <Group grow direction="column">
+          <Group grow key={variant} direction="column">
             {variant}
             {buttonColors.map((color) => (
-              <>
-                <Button
-                  variant={variant}
-                  radius={0}
-                  key={color}
-                  color={color}
-                  shadow>
+              <React.Fragment key={color}>
+                <Button variant={variant} key={color} color={color}>
                   Click Me!
                 </Button>
-              </>
+              </React.Fragment>
             ))}
           </Group>
         ))}

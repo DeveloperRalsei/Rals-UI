@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { defaultProps } from "../../definitions";
-import { defaultTheme, useTheme } from "../../theme";
+import { defaultTheme, defaultProps } from "../../definitions";
+import { Core } from "../../core";
 
 export interface TooltipProps extends defaultProps {
   children: React.ReactNode;
@@ -22,7 +22,10 @@ export const TooltipStyles: React.CSSProperties = {
   backgroundColor: defaultTheme.colors.light,
   color: defaultTheme.colors.dark,
   padding: defaultTheme.padSizes.sm,
-  borderRadius: defaultTheme.radiusSizes[defaultTheme.defaultRadius],
+  borderRadius:
+    typeof defaultTheme.defaultRadius !== "number"
+      ? defaultTheme.radiusSizes[defaultTheme.defaultRadius]
+      : defaultTheme.defaultRadius,
   whiteSpace: "nowrap",
   transition: "all 0.3s",
   zIndex: 100,
@@ -39,7 +42,7 @@ export const Tooltip = ({
   ...props
 }: TooltipProps) => {
   const [isOpen, setOpened] = useState(opened);
-  const theme = useTheme() || defaultTheme;
+  const theme = defaultTheme;
 
   const positonStyles: Record<typeof position, React.CSSProperties> = {
     top: {
@@ -115,18 +118,19 @@ export const Tooltip = ({
 
   const styles = {
     ...TooltipStyles,
-    ...colorVariants[color],
     ...positonStyles[position],
+    ...colorVariants[color],
     ...props.style,
   };
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
+    <Core
+      {...props}
+      className="rals-tooltip"
+      style={{ position: "relative", display: "inline-block" }}>
       <div
         onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}
-        className="rals-tooltip"
-      >
+        onMouseLeave={() => setOpened(false)}>
         {children}
       </div>
       {isOpen && (
@@ -135,6 +139,6 @@ export const Tooltip = ({
           {content}
         </div>
       )}
-    </div>
+    </Core>
   );
 };

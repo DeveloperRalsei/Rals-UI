@@ -1,5 +1,6 @@
 import React from "react";
 import { defaultProps } from "../../definitions";
+import { Core } from "../../core";
 
 export interface GroupProps extends defaultProps {
   id?: string;
@@ -44,8 +45,8 @@ export const Group = ({
   };
 
   return (
-    <div {...props} id={props.id} style={styles} className="rals-group">
+    <Core {...props} style={styles} className="rals-group">
       {children}
-    </div>
+    </Core>
   );
 };

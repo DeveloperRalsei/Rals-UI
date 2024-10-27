@@ -24,6 +24,7 @@ export default function App() {
 - [x] Container
 - [x] Group
 - [x] Tooltip
+- [x] Theme Provider
 - [ ] Inputs
 - [ ] Card
 - [ ] Modal
@@ -35,3 +36,4 @@ export default function App() {
 
 - This is a very early version of the library. I'm still working on it.
 - I'm not a pro :P so if you find any bugs or have any suggestions, please open an issue or a pull request.
+- Light mode has some issues and not working correctly.

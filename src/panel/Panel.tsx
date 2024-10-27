@@ -7,17 +7,17 @@ import { PanelNavbar, PanelNavbarProps } from "./PanelNavbar";
 
 export interface PanelProps {
   children?: React.ReactNode;
-  header?: { height: number; collapsed?: boolean };
+  header?: { height: number };
   navbar?: { width: number; collapsed?: boolean };
   footer?: { height: number };
-  aside?: { width: number };
+  aside?: { width: number; collapsed?: boolean };
 }
 
 export const Panel = ({
   header = { height: 50 },
   navbar = { width: 150, collapsed: false },
   footer = { height: 50 },
-  aside = { width: 200 },
+  aside = { width: 200, collapsed: true },
   children,
 }: PanelProps) => {
   /**Element's Styles */
