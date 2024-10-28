@@ -36,16 +36,17 @@ export default function Buttons() {
       <Link to={"/panel"}>
         <Button>Go to the Panel</Button>
       </Link>
+      <Button icon variant="filled">
+        😀
+      </Button>
       <Group gap={10} h={"100%"}>
         {buttonVariants.map((variant) => (
           <Group grow key={variant} direction="column">
             {variant}
             {buttonColors.map((color) => (
-              <React.Fragment key={color}>
-                <Button variant={variant} key={color} color={color}>
-                  Click Me!
-                </Button>
-              </React.Fragment>
+              <Button variant={variant} key={color} color={color}>
+                Click Me!
+              </Button>
             ))}
           </Group>
         ))}

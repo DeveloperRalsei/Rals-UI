@@ -8,7 +8,7 @@ export interface UnstyledButtonProps
     defaultProps {
   withBorder?: boolean;
   size?: keyof typeof defaultTheme.padSizes;
-  color?: keyof typeof defaultTheme.colors;
+  color?: keyof typeof defaultTheme.colors | (string & {});
   m?: number | string;
   leftSection?: React.ReactNode;
   rightSection?: React.ReactNode;
@@ -31,7 +31,7 @@ export const UnstyledButton = ({
   className,
   c = "light",
   shadow = false,
-  size = "sm",
+  size = "md",
   color = "transparent",
   radius = 0,
   leftSection,

@@ -1,17 +1,17 @@
 export const padSizes = {
-  xs: "0.375rem",
-  sm: "0.5rem",
-  md: "0.75rem",
-  lg: "1rem",
-  xl: "1.25rem",
+  xs: "0.175rem",
+  sm: "0.25rem",
+  md: "0.5rem",
+  lg: "0.75rem",
+  xl: "1rem",
 } as const;
 
 export const radiusSizes = {
-  xs: "0.25rem",
-  sm: "0.5rem",
-  md: "0.75rem",
-  lg: "1rem",
-  xl: "1.25rem",
+  xs: "0.175rem",
+  sm: "0.25rem",
+  md: "0.5rem",
+  lg: "0.75rem",
+  xl: "1rem",
   circle: "100%",
 } as const;
 

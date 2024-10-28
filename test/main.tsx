@@ -2,8 +2,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Page from "./Page";
 import { PanelPage } from "./PanelPage";
-import "../src/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Cursor from "rals-ui/cursor";
+import "../src/index.css";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Cursor />
+      <RouterProvider router={router} />
+    </>
+  );
 };
 
 createRoot(document.getElementById("root")!).render(<App />);

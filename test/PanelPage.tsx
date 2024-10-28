@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Panel } from "../src/panel";
-import { Button, Group, Title } from "../src";
+import { Button, Container, Group, Title } from "../src";
 
 export const PanelPage = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -33,7 +33,13 @@ export const PanelPage = () => {
         </Group>
       </Panel.Navbar>
 
-      <Panel.Main>test</Panel.Main>
+      <Panel.Main>
+        <Container size="sm">
+          <Title order="h3" p={"20px 0 0 0"}>
+            Main
+          </Title>
+        </Container>
+      </Panel.Main>
 
       <Panel.Footer withBorder>
         <Title order="h4">Footer</Title>

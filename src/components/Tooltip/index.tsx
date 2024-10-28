@@ -9,6 +9,7 @@ export interface TooltipProps extends defaultProps {
   withArrow?: boolean;
   opened?: boolean;
   style?: React.CSSProperties;
+  size?: "sm" | "md" | "lg";
   color?: "light" | "dark";
   fColor?: string;
   position?: "top" | "bottom" | "left" | "right";
@@ -21,7 +22,7 @@ export const TooltipStyles: React.CSSProperties = {
   transform: "translateX(-50%)",
   backgroundColor: defaultTheme.colors.light,
   color: defaultTheme.colors.dark,
-  padding: defaultTheme.padSizes.sm,
+  padding: defaultTheme.padSizes.md,
   borderRadius:
     typeof defaultTheme.defaultRadius !== "number"
       ? defaultTheme.radiusSizes[defaultTheme.defaultRadius]
@@ -36,6 +37,7 @@ export const Tooltip = ({
   children,
   position = "top",
   content,
+  size = "md",
   color = "light",
   opened = false,
   withArrow = false,
@@ -44,7 +46,7 @@ export const Tooltip = ({
   const [isOpen, setOpened] = useState(opened);
   const theme = defaultTheme;
 
-  const positonStyles: Record<typeof position, React.CSSProperties> = {
+  const positionStyles: Record<typeof position, React.CSSProperties> = {
     top: {
       bottom: withArrow ? "120%" : "110%",
       left: "50%",
@@ -62,7 +64,7 @@ export const Tooltip = ({
     },
     left: {
       bottom: "50%",
-      left: withArrow ? "-130%" : "-120%",
+      left: withArrow ? "-115%" : "-105%",
       transform: "translateX(0) translateY(50%)",
     },
   };
@@ -116,9 +118,16 @@ export const Tooltip = ({
     },
   };
 
+  const sizeStyles: Record<typeof size, React.CSSProperties> = {
+    sm: { padding: theme.padSizes.sm },
+    md: { padding: theme.padSizes.md },
+    lg: { padding: theme.padSizes.lg },
+  };
+
   const styles = {
     ...TooltipStyles,
-    ...positonStyles[position],
+    ...positionStyles[position],
+    ...sizeStyles[size],
     ...colorVariants[color],
     ...props.style,
   };
@@ -127,10 +136,12 @@ export const Tooltip = ({
     <Core
       {...props}
       className="rals-tooltip"
-      style={{ position: "relative", display: "inline-block" }}>
+      style={{ position: "relative", display: "inline-block" }}
+    >
       <div
         onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}>
+        onMouseLeave={() => setOpened(false)}
+      >
         {children}
       </div>
       {isOpen && (

@@ -41,10 +41,16 @@
         "default": "./dist/cjs/theme/index.js",
         "types": "./dist/cjs/theme/index.d.ts"
       }
-    }
+    },
+    "./cursor": {
+      "import": "./dist/esm/cursor/index.js",
+      "require": "./dist/cjs/cursor/index.js"
+    },
+    "./index.css": "./dist/index.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/index.css"
   ],
   "scripts": {
     "dev": "webpack serve --mode development",

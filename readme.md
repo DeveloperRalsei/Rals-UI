@@ -24,7 +24,6 @@ export default function App() {
 - [x] Container
 - [x] Group
 - [x] Tooltip
-- [x] Theme Provider
 - [ ] Inputs
 - [ ] Card
 - [ ] Modal
