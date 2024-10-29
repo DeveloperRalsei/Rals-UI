@@ -32,6 +32,7 @@ export const Core = <T extends React.ElementType>({
     height: h,
     margin: m,
     padding: p,
+    boxShadow: shadow ? `0px 0px 10px ${defaultTheme.colors.light}55` : "",
     borderRadius:
       typeof radius !== "number" ? defaultTheme.radiusSizes[radius!] : radius,
     ...style,

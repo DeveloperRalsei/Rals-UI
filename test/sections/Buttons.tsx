@@ -9,6 +9,7 @@ import {
 } from "../../src";
 import { Link } from "react-router-dom";
 // import { Button, defaultTheme, ButtonProps, Group } from "rals-ui";
+import { IconHomeFilled } from "@tabler/icons-react";
 
 const buttonColors: Array<keyof typeof defaultTheme.colors> = [
   "primary",
@@ -36,8 +37,8 @@ export default function Buttons() {
       <Link to={"/panel"}>
         <Button>Go to the Panel</Button>
       </Link>
-      <Button icon variant="filled">
-        😀
+      <Button icon variant="filled" size="xs">
+        <IconHomeFilled />
       </Button>
       <Group gap={10} h={"100%"}>
         {buttonVariants.map((variant) => (

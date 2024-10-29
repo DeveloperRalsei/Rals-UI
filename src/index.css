@@ -1,6 +1,6 @@
 @font-face {
   font-family: undertale;
-  src: url(./font/undertale.ttf) format("truetype");
+  src: url(./font/determination-reg.ttf);
   font-style: normal;
   font-weight: normal;
 }
@@ -13,19 +13,21 @@
   --rals-color-pink: #ff3eb7;
   --rals-color-light: #fff9fe;
   --rals-color-dark: #12151b;
-  --rals-font-family: "undertale", sans-serif;
+  --rals-color-black: #000;
+  --rals-font-family: "undertale";
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: var(--rals-font-family);
 }
 
 body {
-  background-color: var(--rals-color-dark);
+  font-size: 1.3rem;
+  background-color: var(--rals-color-black);
   color: var(--rals-color-light);
-  font-family: var(--rals-font-family);
 }
 
 a {
@@ -39,7 +41,9 @@ a {
 }
 
 .rals-button {
-  transition: transform 0.03s, background-color 0.2s ease;
+  transition:
+    transform 0.03s,
+    background-color 0.2s ease;
   &:active {
     transform: translateY(0.6px);
   }

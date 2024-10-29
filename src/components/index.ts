@@ -4,3 +4,5 @@ export * from "./Tooltip/index";
 export * from "./Container/index";
 export * from "./Title";
 export * from "./Text";
+export * from "./Paper";
+export * from "./Card";

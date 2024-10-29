@@ -9,30 +9,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: "babel-loader",
-      },
-    ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    hot: true,
-    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -47,16 +23,23 @@ module.exports = {
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "font/",
-            },
-          },
-        ],
+        type: "asset/resource",
+        generator: {
+          filename: "font/[name][ext]",
+        },
       },
     ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    hot: true,
+    historyApiFallback: true,
   },
 };

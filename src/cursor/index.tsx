@@ -11,7 +11,7 @@ const Cursor = ({
   const cords = { x: 0, y: 0 };
   const circlesRef = useRef<HTMLDivElement[]>([]);
   const positions = useRef<{ x: number; y: number }[]>(
-    Array(9).fill({ x: 0, y: 0 })
+    Array(9).fill({ x: 0, y: 0 }),
   );
 
   useEffect(() => {
@@ -72,7 +72,8 @@ const Cursor = ({
           key={i}
           style={styles}
           className="circle"
-          ref={(el) => (circlesRef.current[i] = el!)}></div>
+          ref={(el) => (circlesRef.current[i] = el!)}
+        ></div>
       ))}
     </Core>
   );

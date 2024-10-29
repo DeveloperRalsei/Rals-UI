@@ -22,7 +22,8 @@ export const colors = {
   lightPink: "#fe96e0",
   pink: "#ff3eb7",
   light: "#fff9fe",
-  dark: "#000",
+  dark: "#12151b",
+  black: "#000",
   inherit: "#ccc",
   transparent: "transparent",
 } as const;

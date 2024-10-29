@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Buttons from "./sections/Buttons";
 import Tooltip from "./sections/Tooltip";
-import { Button, Container, Text, UnstyledButton } from "../src";
+import { Button, Card, Container, Group, Paper, Text } from "../src";
 import { Link } from "react-router-dom";
 
 export default function Page() {
@@ -23,6 +23,16 @@ export default function Page() {
         </Link>
         <Buttons />
         <Tooltip />
+
+        <Group w={"100%"}>
+          <Card>
+            <Text>Card</Text>
+          </Card>
+        </Group>
+
+        <Paper p={20} shadow>
+          Hey naber
+        </Paper>
       </Container>
     </>
   );
