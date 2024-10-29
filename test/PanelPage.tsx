@@ -7,43 +7,32 @@ export const PanelPage = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Panel navbar={{ width: 200, collapsed }} footer={{ height: 200 }}>
+    <Panel navbar={{ width: 200, collapsed }}>
       <Panel.Header>
-        <Group w={"100%"} h={"100%"} align="center" justify="between">
-          <Group gap={20} p={"0 20px"} align="center">
+        <Group w={"100%"} h={"100%"} align="center" justify="space-between">
+          <Group>
             <Title order="h2">Panel</Title>
             <Link to={"/"}>
-              <Button variant="subtle" leftSection={"<"}>
-                GO BACK
-              </Button>
+              <Button leftSection="<">Go Back</Button>
             </Link>
           </Group>
           <Button variant="ghost" onClick={() => setCollapsed(!collapsed)}>
-            Open/Close Nav
+            Open/Close Navbar
           </Button>
         </Group>
       </Panel.Header>
 
       <Panel.Navbar>
-        <Group direction="column" w={"100%"} p={10}>
-          <Button variant="default">Nav item</Button>
-          <Button variant="default">Nav item</Button>
-          <Button variant="default">Nav item</Button>
-          <Button variant="default">Nav item</Button>
+        <Group direction="column" h={"100%"} w={"100%"} p={10}>
+          {Array(20)
+            .fill("1234567890abcdef".split(""))
+            .map((_, i) => (
+              <Button variant="default" color="red" key={i}>
+                Navbar Item
+              </Button>
+            ))}
         </Group>
       </Panel.Navbar>
-
-      <Panel.Main>
-        <Container size="sm">
-          <Title order="h3" p={"20px 0 0 0"}>
-            Main
-          </Title>
-        </Container>
-      </Panel.Main>
-
-      <Panel.Footer withBorder>
-        <Title order="h4">Footer</Title>
-      </Panel.Footer>
     </Panel>
   );
 };

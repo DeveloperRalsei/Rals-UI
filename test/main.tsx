@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import Page from "./Page";
 import { PanelPage } from "./PanelPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Cursor from "rals-ui/cursor";
 import "../src/index.css";
 
 const router = createBrowserRouter([
@@ -20,7 +19,6 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <Cursor />
       <RouterProvider router={router} />
     </>
   );

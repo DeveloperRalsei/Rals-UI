@@ -1,16 +1,18 @@
 import React from "react";
-import { defaultTheme } from "../definitions";
+import { defaultTheme, Theme } from "../definitions";
 import { Core } from "../core";
+import { useBreakPoints } from "../hooks/useBreakPoints";
+
 export interface PanelNavbarProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
   width?: number;
   collapsed?: boolean;
   withBorder?: boolean;
+  breakPoint?: keyof Theme["breakPoints"];
 }
 
 export const PanelNavbarStyles: React.CSSProperties = {
-  width: "150px",
   height: "100vh",
   position: "relative",
   borderRight: "1px solid " + defaultTheme.colors.inherit,
@@ -19,18 +21,30 @@ export const PanelNavbarStyles: React.CSSProperties = {
 };
 
 export const PanelNavbar = ({
-  width,
+  width = 150,
   children,
   collapsed = false,
   withBorder = true,
+  breakPoint = "sm",
   ...props
 }: PanelNavbarProps) => {
+  const windowWidth = useBreakPoints();
+
+  const isMobile = windowWidth < defaultTheme.breakPoints.xs;
+
   const styles: React.CSSProperties = {
     ...PanelNavbarStyles,
     borderRight: withBorder ? PanelNavbarStyles.borderRight : "none",
     ...props.style,
-    width: collapsed ? 0 : width,
+    ...(isMobile
+      ? {
+          width: collapsed ? 0 : "100%",
+        }
+      : {
+          width: collapsed ? 0 : width,
+        }),
   };
+
   return (
     <Core as="nav" style={styles} className="rals-panel-navbar">
       {children}

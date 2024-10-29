@@ -8,8 +8,8 @@ export interface GroupProps extends defaultProps {
   gap?: number | string;
   direction?: "row" | "column";
   wrap?: boolean;
-  justify?: "start" | "end" | "center" | "between" | "around";
-  align?: "start" | "end" | "center" | "stretch";
+  justify?: React.CSSProperties["justifyContent"];
+  align?: React.CSSProperties["alignItems"];
   w?: number | string;
   h?: number | string;
   grow?: boolean;

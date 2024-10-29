@@ -35,14 +35,15 @@ export const fontSizes = {
   lg: "1.125rem",
   xl: "1.25rem",
   "2xl": "1.5rem",
-};
+} as const;
 
+const em = 16;
 export const breakPoints = {
-  xs: "36em",
-  sm: "48em",
-  md: "62em",
-  lg: "75em",
-  xl: "88em",
+  xs: 36 * em,
+  sm: 48 * em,
+  md: 62 * em,
+  lg: 75 * em,
+  xl: 88 * em,
 } as const;
 
 export type defaultProps = {
@@ -77,5 +78,5 @@ export type Theme = {
   defaultRadius: keyof typeof radiusSizes;
   radiusSizes: Record<keyof typeof radiusSizes, string>;
   defaultTransition: string;
-  breakPoints: Record<keyof typeof breakPoints, string>;
+  breakPoints: Record<keyof typeof breakPoints, number>;
 };

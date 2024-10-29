@@ -30,7 +30,8 @@ export const TooltipStyles: React.CSSProperties = {
   whiteSpace: "nowrap",
   transition: "all 0.3s",
   zIndex: 100,
-  fontSize: "12px",
+  fontSize: defaultTheme.fontSizes.sm,
+  pointerEvents: "none",
 };
 
 export const Tooltip = ({
@@ -64,7 +65,7 @@ export const Tooltip = ({
     },
     left: {
       bottom: "50%",
-      left: withArrow ? "-115%" : "-105%",
+      left: withArrow ? "-120%" : "-100%",
       transform: "translateX(0) translateY(50%)",
     },
   };
@@ -136,12 +137,10 @@ export const Tooltip = ({
     <Core
       {...props}
       className="rals-tooltip"
-      style={{ position: "relative", display: "inline-block" }}
-    >
+      style={{ position: "relative", display: "inline-block" }}>
       <div
         onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}
-      >
+        onMouseLeave={() => setOpened(false)}>
         {children}
       </div>
       {isOpen && (
