@@ -17,7 +17,7 @@ export const PanelNavbarStyles: React.CSSProperties = {
   position: "relative",
   borderRight: "1px solid " + defaultTheme.colors.inherit,
   zIndex: 1,
-  transition: defaultTheme.defaultTransition + " ease",
+  transition: defaultTheme.defaultTransition,
 };
 
 export const PanelNavbar = ({
@@ -30,7 +30,7 @@ export const PanelNavbar = ({
 }: PanelNavbarProps) => {
   const windowWidth = useBreakPoints();
 
-  const isMobile = windowWidth < defaultTheme.breakPoints.xs;
+  const isMobile = windowWidth < defaultTheme.breakPoints.md;
 
   const styles: React.CSSProperties = {
     ...PanelNavbarStyles,

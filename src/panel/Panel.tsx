@@ -36,17 +36,20 @@ export const Panel = ({
   const navbarStyle: React.CSSProperties = {
     width: `${navbar.width}px`,
     overflow: "hidden",
+    overflowY: "auto",
   };
 
   const asideStyle: React.CSSProperties = {
     width: `${aside.width}px`,
     overflow: "hidden",
+    overflowY: "auto",
   };
 
   const mainContentStyle: React.CSSProperties = {
     flex: 1,
     flexGrow: 1,
     overflowY: "auto",
+    whiteSpace: "break-spaces",
   };
 
   /** Panel Element'sProps */
@@ -61,7 +64,6 @@ export const Panel = ({
   };
 
   /** Elements */
-
   const headerChild = React.Children.toArray(children).find(
     (child) => (child as React.ReactElement).type === PanelHeader,
   );

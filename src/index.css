@@ -3,6 +3,7 @@
   src: url(./font/determination-reg.ttf);
   font-style: normal;
   font-weight: normal;
+  color: var(--rals-color-black);
 }
 
 :root {

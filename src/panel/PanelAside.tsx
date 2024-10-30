@@ -1,5 +1,6 @@
 import React from "react";
 import { defaultTheme } from "../definitions";
+import { useBreakPoints } from "../hooks/useBreakPoints";
 export interface PanelAsideProps {
   children?: React.ReactNode;
   width?: number;
@@ -12,8 +13,7 @@ export const PanelAsideStyles: React.CSSProperties = {
   height: "100vh",
   borderLeft: "1px solid " + defaultTheme.colors.inherit,
   zIndex: 1,
-  gridArea: "aside",
-  transition: defaultTheme.defaultTransition + " ease",
+  transition: defaultTheme.defaultTransition,
 };
 
 export const PanelAside = ({
@@ -22,10 +22,18 @@ export const PanelAside = ({
   children,
   ...props
 }: PanelAsideProps) => {
+  const windowWidth = useBreakPoints();
+
+  const isMobile = windowWidth < defaultTheme.breakPoints.md;
+
   const styles: React.CSSProperties = {
     ...PanelAsideStyles,
     ...props.style,
-    width: collapsed ? 0 : width,
+    ...(isMobile
+      ? { width: collapsed ? 0 : "100%" }
+      : {
+          width: collapsed ? 0 : width,
+        }),
   };
 
   return (

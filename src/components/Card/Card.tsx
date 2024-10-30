@@ -10,6 +10,7 @@ export interface CardProps extends defaultProps {
 }
 
 export const CardStyles: React.CSSProperties = {
+  width: "100%",
   backgroundColor: defaultTheme.colors.black,
   border: `1px solid ${defaultTheme.colors.inherit}`,
   borderRadius: defaultTheme.radiusSizes.md,

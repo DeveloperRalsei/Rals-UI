@@ -41,7 +41,7 @@ export const Core = <T extends React.ElementType>({
       },
     }),
     background: bg,
-    color: typeof c === "string" ? c : defaultTheme.colors[c ?? "light"],
+    color: typeof c === "string" ? c : defaultTheme.colors[c || "light"],
     width: w,
     height: h,
     margin: m,

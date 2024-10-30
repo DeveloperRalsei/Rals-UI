@@ -7,14 +7,15 @@
     "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],
     "types": ["node"],
     "target": "ES6",
-    "module": "ES2015",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "rootDir": "src",
-    "outDir": "dist/esm",
+    "outDir": "dist/cjs",
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "declarationDir": "dist/cjs"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

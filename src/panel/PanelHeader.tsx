@@ -8,13 +8,6 @@ export interface PanelHeaderProps {
   withBorder?: boolean;
 }
 
-export const PanelHeaderStyles: React.CSSProperties = {
-  height: "70px",
-  width: "100vw",
-  zIndex: 2,
-  overflow: "hidden",
-};
-
 export const PanelHeader = ({
   children,
   height,
@@ -22,7 +15,6 @@ export const PanelHeader = ({
   ...props
 }: PanelHeaderProps) => {
   const styles: React.CSSProperties = {
-    ...PanelHeaderStyles,
     borderBottom: withBorder
       ? "1px solid " + defaultTheme.colors.inherit
       : "none",
