@@ -4,56 +4,37 @@
   "description": "A simple react ui component library reminiscent of my favorite fictional character ralsei :3",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    "./styles.css": "./dist/index.css",
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./cursor": {
+      "import": "./dist/esm/cursor/index.js",
+      "require": "./dist/cjs/cursor/index.js",
+      "types": "./dist/types/cursor/index.d.ts"
+    },
+    "./panel": {
+      "import": "./dist/esm/panel/index.js",
+      "require": "./dist/cjs/panel/index.js",
+      "types": "./dist/types/panel/index.d.ts"
+    }
+  },
   "keywords": [
     "ui",
     "react",
     "deltarune",
     "ralsei"
   ],
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./dist/esm/index.js",
-        "types": "./dist/esm/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/cjs/index.js",
-        "types": "./dist/cjs/index.d.ts"
-      }
-    },
-    "./panel": {
-      "import": {
-        "default": "./dist/esm/panel/index.js",
-        "types": "./dist/esm/panel/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/cjs/panel/index.js",
-        "types": "./dist/cjs/panel/index.d.ts"
-      }
-    },
-    "./theme": {
-      "import": {
-        "default": "./dist/esm/theme/index.js",
-        "types": "./dist/esm/theme/index.d.ts"
-      },
-      "require": {
-        "default": "./dist/cjs/theme/index.js",
-        "types": "./dist/cjs/theme/index.d.ts"
-      }
-    },
-    "./cursor": {
-      "import": "./dist/esm/cursor/index.js",
-      "require": "./dist/cjs/cursor/index.js"
-    },
-    "./index.css": "./dist/index.css"
-  },
   "files": [
     "dist",
     "dist/index.css"
   ],
   "scripts": {
-    "dev": "webpack serve --mode development",
+    "dev": "vite",
     "build": "sh build.sh",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
@@ -66,24 +47,14 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.25.8",
-    "@babel/preset-env": "^7.25.8",
-    "@babel/preset-react": "^7.25.7",
-    "@babel/preset-typescript": "^7.25.7",
     "@tabler/icons-react": "^3.21.0",
     "@types/node": "^22.7.7",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "babel-loader": "^9.2.1",
-    "css-loader": "^7.1.2",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.6.2",
+    "@vitejs/plugin-react": "^4.3.3",
     "react-router-dom": "^6.27.0",
-    "style-loader": "^4.0.0",
     "typescript": "^5.6.3",
-    "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0"
+    "vite": "^5.4.10"
   },
   "peerDependencies": {
     "react": "^18.0.0",

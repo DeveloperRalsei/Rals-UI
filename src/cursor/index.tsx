@@ -67,14 +67,16 @@ const Cursor = ({
 
   return (
     <Core className="cursor">
-      {[...Array(circleCount)].map((_, i) => (
-        <div
-          key={i}
-          style={styles}
-          className="circle"
-          ref={(el) => (circlesRef.current[i] = el!)}
-        ></div>
-      ))}
+      {Array(circleCount)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            style={styles}
+            className="circle"
+            ref={(el) => (circlesRef.current[i] = el!)}
+          ></div>
+        ))}
     </Core>
   );
 };

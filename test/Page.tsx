@@ -1,20 +1,13 @@
 import React, { useEffect } from "react";
 import Buttons from "./sections/Buttons";
 import Tooltip from "./sections/Tooltip";
-import { Button, Card, Container, Group, Paper, Text } from "../src";
+import { Button, Card, CardBody, Container, Group, Paper, Text } from "../src";
 import { Link } from "react-router-dom";
 
 export default function Page() {
   return (
     <>
-      <Container
-        style={{
-          marginTop: "30px",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-        }}
-        size="sm">
+      <Container m={"100px 0 0 0"} size="md">
         <Text>Page</Text>
         <Link to="/panel">
           <Button variant="default" rightSection="->">
@@ -24,14 +17,20 @@ export default function Page() {
         <Buttons />
         <Tooltip />
 
+        <Button variant="outlined">Woo HOOOOOO!</Button>
+
         <Group w={"100%"}>
           <Card>
-            <Text>Card</Text>
+            <Card.Header>CardHeader</Card.Header>
+
+            <Card.Body>test</Card.Body>
+
+            <Card.Footer>CardFooter</Card.Footer>
           </Card>
         </Group>
 
-        <Paper p={20} shadow>
-          Hey naber
+        <Paper p={20}>
+          <Text c="lightPink">Heyy</Text>
         </Paper>
       </Container>
     </>

@@ -11,7 +11,12 @@ export default function Buttons() {
           <Button>Hover Me!</Button>
         </Tooltip>
         {"abcdef".split("").map((letter) => (
-          <Tooltip content="tooltip" key={letter} position="right">
+          <Tooltip
+            content="tooltip"
+            key={letter}
+            withArrow
+            position="left"
+            opened>
             <Button>Hover Me!</Button>
           </Tooltip>
         ))}

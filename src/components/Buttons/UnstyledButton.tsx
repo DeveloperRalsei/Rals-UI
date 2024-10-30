@@ -59,7 +59,7 @@ export const UnstyledButton = ({
 
   return (
     <Core as={"button"} {...props} style={styles} className="rals-button">
-      <Group style={{ whiteSpace: "nowrap" }}>
+      <Group>
         {leftSection}
         <div style={{ color: styles.color }}>{children}</div>
         {rightSection}

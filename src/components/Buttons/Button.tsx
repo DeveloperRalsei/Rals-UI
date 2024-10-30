@@ -8,11 +8,6 @@ export interface ButtonProps extends UnstyledButtonProps {
   icon?: boolean;
 }
 
-export const ButtonStyles: React.CSSProperties = {
-  color: defaultTheme.colors.primary,
-  backgroundColor: defaultTheme.colors.primary,
-};
-
 export const Button = ({
   variant = "filled",
   color = "primary",
@@ -67,7 +62,6 @@ export const Button = ({
   };
 
   const styles: React.CSSProperties = {
-    ...ButtonStyles,
     ...(icon && {
       width: "2.5em",
       height: "2.5em",

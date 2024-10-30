@@ -10,7 +10,7 @@ export interface TooltipProps extends defaultProps {
   opened?: boolean;
   style?: React.CSSProperties;
   size?: "sm" | "md" | "lg";
-  color?: "light" | "dark";
+  color?: "light" | "dark" | (string & {});
   fColor?: string;
   position?: "top" | "bottom" | "left" | "right";
 }
@@ -54,18 +54,18 @@ export const Tooltip = ({
       transform: "translateX(-50%) translateY(0)",
     },
     bottom: {
-      bottom: withArrow ? "-120%" : "-110%",
+      bottom: withArrow ? "-110%" : "-100%",
       left: "50%",
       transform: "translateX(-50%) translateY(0)",
     },
     right: {
       bottom: "50%",
-      left: withArrow ? "110%" : "100%",
+      left: withArrow ? "115%" : "105%",
       transform: "translateX(0) translateY(50%)",
     },
     left: {
       bottom: "50%",
-      left: withArrow ? "-120%" : "-100%",
+      left: withArrow ? "-100%" : "-110%",
       transform: "translateX(0) translateY(50%)",
     },
   };
@@ -76,7 +76,9 @@ export const Tooltip = ({
     height: 0,
     borderLeft: "10px solid transparent",
     borderRight: "10px solid transparent",
-    borderBottom: `10px solid ${theme.colors[color]}`,
+    borderBottom: `10px solid ${
+      theme.colors[color as keyof typeof theme.colors]
+    }`,
     zIndex: 100,
   };
 
@@ -108,7 +110,10 @@ export const Tooltip = ({
     }),
   };
 
-  const colorVariants: Record<typeof color, React.CSSProperties> = {
+  const colorVariants: Record<
+    typeof color | (string & {}),
+    React.CSSProperties
+  > = {
     light: {
       backgroundColor: theme.colors.light,
       color: theme.colors.dark,
@@ -137,10 +142,12 @@ export const Tooltip = ({
     <Core
       {...props}
       className="rals-tooltip"
-      style={{ position: "relative", display: "inline-block" }}>
+      style={{ position: "relative", display: "inline-block", zIndex: 999 }}
+    >
       <div
         onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}>
+        onMouseLeave={() => setOpened(false)}
+      >
         {children}
       </div>
       {isOpen && (

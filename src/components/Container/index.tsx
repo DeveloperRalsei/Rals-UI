@@ -1,6 +1,7 @@
 import React from "react";
-import { defaultProps } from "../../definitions";
+import { defaultProps, defaultTheme } from "../../definitions";
 import { Core } from "../../core";
+import { useBreakPoints } from "../../hooks/useBreakPoints";
 export interface ContainerProps extends defaultProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl";
@@ -18,11 +19,13 @@ export const Container = ({
   children,
   ...props
 }: ContainerProps) => {
+  const windowWidth = useBreakPoints();
+
   const sizeStyles: Record<typeof size, string> = {
-    sm: "50%",
-    md: "60%",
-    lg: "70%",
-    xl: "80%",
+    sm: windowWidth < defaultTheme.breakPoints[size] ? "95%" : "50%",
+    md: windowWidth < defaultTheme.breakPoints[size] ? "95%" : "60%",
+    lg: windowWidth < defaultTheme.breakPoints[size] ? "95%" : "70%",
+    xl: windowWidth < defaultTheme.breakPoints[size] ? "95%" : "80%",
   };
 
   const styles: React.CSSProperties = {

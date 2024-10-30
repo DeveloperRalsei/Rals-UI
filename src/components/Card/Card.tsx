@@ -1,7 +1,9 @@
 import React from "react";
 import { Core } from "../../core";
 import { defaultProps, defaultTheme } from "../../definitions";
-// import { CardBody, CardFooter, CardHeader } from "./index";
+import { CardBody } from "./CardBody";
+import { CardFooter } from "./CardFooter";
+import { CardHeader } from "./CardHeader";
 
 export interface CardProps extends defaultProps {
   children?: React.ReactNode;
@@ -10,7 +12,7 @@ export interface CardProps extends defaultProps {
 export const CardStyles: React.CSSProperties = {
   backgroundColor: defaultTheme.colors.black,
   border: `1px solid ${defaultTheme.colors.inherit}`,
-  width: "100%",
+  borderRadius: defaultTheme.radiusSizes.md,
 };
 
 export const Card = ({ children, ...props }: CardProps) => {
@@ -25,6 +27,6 @@ export const Card = ({ children, ...props }: CardProps) => {
   );
 };
 
-// Card.Header = CardHeader;
-// Card.Body = CardBody;
-// Card.Footer = CardFooter;
+Card.Body = CardBody;
+Card.Header = CardHeader;
+Card.Footer = CardFooter;

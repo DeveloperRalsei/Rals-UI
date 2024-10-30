@@ -58,6 +58,8 @@ export type defaultProps = {
   style?: React.CSSProperties;
   className?: string;
   id?: string;
+  hiddenFrom?: keyof typeof breakPoints;
+  visibleFrom?: keyof typeof breakPoints;
   children?: React.ReactNode;
 };
 

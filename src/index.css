@@ -14,6 +14,20 @@
   --rals-color-light: #fff9fe;
   --rals-color-dark: #12151b;
   --rals-color-black: #000;
+
+  --rals-pad-xs: 0.175rem;
+  --rals-pad-sm: 0.25rem;
+  --rals-pad-md: 0.5rem;
+  --rals-pad-lg: 0.75rem;
+  --rals-pad-xl: 1rem;
+
+  --rals-fs-xs: 0.75rem;
+  --rals-fs-sm: 0.875rem;
+  --rals-fs-md: 1rem;
+  --rals-fs-lg: 1.125rem;
+  --rals-fs-xl: 1.25rem;
+  --rals-fs-2xl: 1.5rem;
+
   --rals-font-family: "undertale";
 }
 
@@ -47,8 +61,4 @@ a {
   &:active {
     transform: translateY(0.6px);
   }
-}
-
-.rals-group {
-  display: flex;
 }

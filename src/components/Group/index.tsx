@@ -7,7 +7,7 @@ export interface GroupProps extends defaultProps {
   children?: React.ReactNode;
   gap?: number | string;
   direction?: "row" | "column";
-  wrap?: boolean;
+  wrap?: React.CSSProperties["flexWrap"];
   justify?: React.CSSProperties["justifyContent"];
   align?: React.CSSProperties["alignItems"];
   w?: number | string;
@@ -20,7 +20,7 @@ export const Group = ({
   children,
   gap = 10,
   direction = "row",
-  wrap = false,
+  wrap = "nowrap",
   justify,
   align,
   w = "fit-content",
@@ -33,7 +33,7 @@ export const Group = ({
     display: "flex",
     gap,
     flexDirection: direction,
-    flexWrap: wrap ? "wrap" : "nowrap",
+    flexWrap: wrap,
     justifyContent: justify,
     alignItems: align,
     width: w,
@@ -45,7 +45,7 @@ export const Group = ({
   };
 
   return (
-    <Core {...props} style={styles} className="rals-group">
+    <Core style={styles} className="rals-group" {...props}>
       {children}
     </Core>
   );

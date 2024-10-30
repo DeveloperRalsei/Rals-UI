@@ -16,12 +16,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
-};
-
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <RouterProvider router={router} />
+);

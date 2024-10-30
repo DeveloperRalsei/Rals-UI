@@ -6,10 +6,11 @@ import {
   ButtonProps,
   Core,
   Title,
+  Tooltip,
 } from "../../src";
 import { Link } from "react-router-dom";
 // import { Button, defaultTheme, ButtonProps, Group } from "rals-ui";
-import { IconHomeFilled } from "@tabler/icons-react";
+import IconHomeFilled from "@tabler/icons-react/dist/esm/icons/IconHomeFilled.mjs";
 
 const buttonColors: Array<keyof typeof defaultTheme.colors> = [
   "primary",
@@ -34,12 +35,16 @@ export default function Buttons() {
       <Title order="h1" style={{ textAlign: "center" }} c="#000">
         Buttons
       </Title>
-      <Link to={"/panel"}>
-        <Button>Go to the Panel</Button>
-      </Link>
-      <Button icon variant="filled" size="xs">
-        <IconHomeFilled />
-      </Button>
+      <Group>
+        <Link to={"/panel"}>
+          <Button>Go to the Panel</Button>
+        </Link>
+        <Tooltip color="light" content="Icon Button">
+          <Button icon variant="filled" size="xs">
+            <IconHomeFilled />
+          </Button>
+        </Tooltip>
+      </Group>
       <Group gap={10} h={"100%"}>
         {buttonVariants.map((variant) => (
           <Group grow key={variant} direction="column">
