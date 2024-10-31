@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Buttons from "./sections/Buttons";
-import Tooltip from "./sections/Tooltip";
-import { Button, Card, CardBody, Container, Group, Paper, Text } from "../src";
+import { Button, Card, Container, Group, Paper, Text, Row, Col } from "../src";
 import { Link } from "react-router-dom";
 
 export default function Page() {
@@ -15,11 +14,20 @@ export default function Page() {
           </Button>
         </Link>
         <Buttons />
-        <Tooltip />
 
-        <Button variant="outlined">Woo HOOOOOO!</Button>
+        <Row shadow>
+          {Array(12)
+            .fill(0)
+            .map((col, i) => {
+              return (
+                <Col visibleFrom="sm" key={col}>
+                  {i + 1}
+                </Col>
+              );
+            })}
+        </Row>
 
-        <Group w={"100%"}>
+        <Group>
           <Card>
             <Card.Header>CardHeader</Card.Header>
 

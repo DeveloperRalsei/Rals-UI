@@ -1,9 +1,12 @@
 import React from "react";
 import { defaultProps, defaultTheme } from "../definitions";
+import { useBreakPoints } from "../hooks/useBreakPoints";
 
 export interface CoreProps<T extends React.ElementType> extends defaultProps {
   as?: T;
   children?: React.ReactNode;
+  hiddenFrom?: "sm" | "xs" | "md" | "lg" | "xl";
+  visibleFrom?: "sm" | "xs" | "md" | "lg" | "xl";
   [key: string]: any;
 }
 
@@ -20,33 +23,32 @@ export const Core = <T extends React.ElementType>({
   p,
   radius,
   shadow,
+  display = "block",
+  hidden = false,
   style,
   hiddenFrom,
   visibleFrom,
   ...rest
 }: CoreProps<T> & React.ComponentPropsWithoutRef<T>) => {
+  const windowWidth = useBreakPoints();
   const Component = as || "div";
 
+  const shouldHide =
+    hiddenFrom && windowWidth >= defaultTheme.breakPoints[hiddenFrom];
+
+  const shouldShow =
+    visibleFrom && windowWidth >= defaultTheme.breakPoints[visibleFrom];
+
   const styles: React.CSSProperties = {
-    ...(hiddenFrom && {
-      display: "none",
-      [hiddenFrom]: {
-        display: "block",
-      },
-    }),
-    ...(visibleFrom && {
-      display: "block",
-      [visibleFrom]: {
-        display: "none",
-      },
-    }),
+    display:
+      hidden || shouldHide || (visibleFrom && !shouldShow) ? "none" : display,
     background: bg,
     color: typeof c === "string" ? c : defaultTheme.colors[c || "light"],
     width: w,
     height: h,
     margin: m,
     padding: p,
-    boxShadow: shadow ? `0px 0px 10px ${defaultTheme.colors.light}55` : "",
+    boxShadow: shadow ? `0px 0px 10px 3px ${defaultTheme.colors.light}55` : "",
     fontFamily: `"undertale", sans-serif`,
     borderRadius:
       typeof radius !== "number" ? defaultTheme.radiusSizes[radius!] : radius,

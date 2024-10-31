@@ -140,9 +140,13 @@ export const Tooltip = ({
 
   return (
     <Core
-      {...props}
-      className="rals-tooltip"
-      style={{ position: "relative", display: "inline-block", zIndex: 999 }}
+      className="rals-tooltip-base"
+      style={{
+        position: "relative",
+        width: "fit-content",
+        display: "inline-block",
+        zIndex: 999,
+      }}
     >
       <div
         onMouseEnter={() => setOpened(true)}
@@ -151,10 +155,10 @@ export const Tooltip = ({
         {children}
       </div>
       {isOpen && (
-        <div style={styles}>
+        <Core style={styles} {...props} className="rals-tooltip">
           {withArrow && <div style={ArrowStyles} />}
           {content}
-        </div>
+        </Core>
       )}
     </Core>
   );

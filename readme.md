@@ -40,8 +40,8 @@ export default function App() {
 - [x] Paper
 - [x] **Panel** (Header height is not working when main content is long)
 - [x] Card
+- [x] Grid
 - [ ] **Inputs** (WIP)
-- [ ] Grid
 - [ ] Modal
 - [ ] Card
 - [ ] Modal
@@ -54,3 +54,4 @@ export default function App() {
 - I'm not a pro :P so if you find any bugs or have any suggestions, please open an issue or a pull request.
 - Light mode has some issues and not working correctly.
 - I also took a lot of inspiration from the mantine library
+- My library is not so customizable though. I'm working on it.

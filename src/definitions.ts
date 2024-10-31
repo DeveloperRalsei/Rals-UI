@@ -47,12 +47,14 @@ export const breakPoints = {
 } as const;
 
 export type defaultProps = {
+  display?: React.CSSProperties["display"];
   m?: number | string;
   p?: number | string;
   w?: number | string;
   h?: number | string;
   shadow?: boolean;
   radius?: keyof typeof radiusSizes | number;
+  hidden?: boolean;
   bg?: string;
   c?: keyof typeof colors | (string & {});
   style?: React.CSSProperties;
